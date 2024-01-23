@@ -1,0 +1,40 @@
+# Ansible script
+
+- hosts : all
+  remote_user : ubuntu
+  become : yes
+  tasks :
+- name : update the servers
+  apt:
+      update_cache : yes
+    - name : install apache2
+      tags : apache, apache2, ubuntu
+      apt:
+         name:
+            - apache2
+            state : latest
+
+         - name : Set timezone
+           command : timedatectl set-timezone Africa/Lagos
+
+         - name : Display IP Address 
+           command : hostname -I
+           register: result_ip
+
+          - name : Create HTML file
+            copy:
+               content : |
+                  <html>
+                  <head><title>Take a look at my webpage<title><head>
+                  <body>
+                    <h1>What do you think</h1>
+                    <p>IP Address: {{result_ip.stdout}}</p>
+                    <p>Time Zone: Africa/Lagos</p>
+                  </body>
+                  </html>
+                 dest: /var/www/html/index.html
+
+              - name : Restart Apache
+                service :
+                   name : apache2
+                   state : restarted

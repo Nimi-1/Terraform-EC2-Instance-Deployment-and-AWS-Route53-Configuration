@@ -1,0 +1,11 @@
+variable "lb_name" {} 
+variable "target-group-name" {}
+variable "lb_type" {}
+variable "load_balancer_sg" {}
+variable "public_subnet1_id" {}
+variable "public_subnet2_id" {}
+variable "public_subnet3_id" {}
+variable "vpc_id" {}
+variable "pub-ec2-instance1-id" {}
+variable "pub-ec2-instance2-id" {}
+variable "pub-ec2-instance3-id" {}

@@ -1,0 +1,9 @@
+variable "cidr_block" {}
+variable "project-name" {}
+variable "instance_type" {}
+variable "target-group-name" {}
+variable "lb_type" {}
+variable "lb_name" {}
+variable "domain_name" {}
+variable "sub_domain_name" {}
+variable "profile" {}
